@@ -1,11 +1,12 @@
-from dotenv import load_dotenv
-load_dotenv()
 from flask import Flask, render_template, request, send_file, url_for
 import os
 import openai
 import base64
 import requests
 import uuid
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -61,4 +62,3 @@ if __name__ == '__main__':
     os.makedirs('uploads', exist_ok=True)
     os.makedirs('static/results', exist_ok=True)
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
-
