@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cartoon & Line Art Generator</title>
+</head>
+<body>
+  <h1>Image Style Converter</h1>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="image" required><br><br>
+    <label><input type="radio" name="style" value="cartoon" checked> Cartoon</label><br>
+    <label><input type="radio" name="style" value="lineart"> Vector Line Art</label><br><br>
+    <button type="submit">Generate</button>
+  </form>
+  {% if result_file %}
+    <h2>Result:</h2>
+    <img src="{{ url_for('static', filename='results/' + result_file) }}" style="max-width: 100%;"><br><br>
+    <a href="{{ url_for('download', filename=result_file) }}">Download Image</a>
+  {% endif %}
+</body>
+</html>
